@@ -7,7 +7,7 @@ install -d -m 0755 -o barman -g barman ${BARMAN_LOG_DIR}
 
 echo "Generating cron schedules"
 echo "${BARMAN_CRON_SCHEDULE} barman /usr/local/bin/barman receive-wal --create-slot ${DB_CONF_SERVER_NAME}; /usr/local/bin/barman cron 2>&1 >> ${BARMAN_LOG_DIR}/barman-cron.log" >> /etc/cron.d/barman
-echo "${BARMAN_BACKUP_SCHEDULE} barman /usr/local/bin/barman backup --wait --jobs 4 all 2>&1 >> ${BARMAN_LOG_DIR}/barman-cron.log" >> /etc/cron.d/barman
+echo "${BARMAN_BACKUP_SCHEDULE} barman export AZURE_STORAGE_KEY=${AZURE_STORAGE_KEY} AZURE_STORAGE_ACCOUNT=${AZURE_STORAGE_ACCOUNT}; /usr/local/bin/barman backup --wait --jobs 4 all 2>&1 >> ${BARMAN_LOG_DIR}/barman-cron.log" >> /etc/cron.d/barman
 
 echo "Generating Barman configurations"
 cat /etc/barman.conf.template | envsubst > /etc/barman.conf

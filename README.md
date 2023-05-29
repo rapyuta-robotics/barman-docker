@@ -89,6 +89,16 @@ The following environment variables may be set when starting the container:
 |--------------------------|----------------------------------------------------------------------------------|
 | /home/barman/.ssh/id_rsa | The private ssh key that barman will use to connect to remote host when recovery |
 
+
+## Azure Storage
+
+Barman supports cloud backup and current projects supports uploading backups to azure storage account.
+
+## Change log
+
+* 3.5.0 - Initial Barman
+* 3.5.1 - Fix to push backups taken from cronjob to azure storage.
+
 ## Footnotes:
 
 <a name='barman_docs'><sup>1</sup></a>: [Barman Documentation](http://docs.pgbarman.org/release/2.1/)
